@@ -87,7 +87,85 @@ python3 app.py
 
 ## 🚀 Çalıştırma
 
-### 🐳 **Docker ile (Önerilen)**
+### 🚂 **Railway ile (Önerilen)**
+
+Railway, Python uygulamaları için mükemmel bir platformdur. Otomatik SSL, scaling ve monitoring özellikleri sunar.
+
+#### **🚀 Hızlı Deploy:**
+1. [Railway.app](https://railway.app) adresine git
+2. GitHub hesabınla giriş yap
+3. "Deploy from GitHub repo" seç
+4. `tahsin-ai` repository'yi seç
+5. Otomatik deploy başlayacak
+
+#### **📋 Deploy Adımları:**
+```bash
+# 1. Railway CLI kurulumu
+npm install -g @railway/cli
+
+# 2. Railway'e giriş yap
+railway login
+
+# 3. Projeyi Railway'e deploy et
+railway up
+
+# 4. Domain'i görüntüle
+railway domain
+
+# 5. Logları takip et
+railway logs
+```
+
+#### **⚙️ Railway Özellikleri:**
+- ✅ **Otomatik SSL**: HTTPS sertifikası
+- ✅ **Auto Scaling**: Yük bazlı ölçeklendirme
+- ✅ **Real-time Logs**: Canlı log takibi
+- ✅ **Custom Domains**: Özel domain desteği
+- ✅ **Environment Variables**: Güvenli config
+- ✅ **GitHub Integration**: Otomatik deploy
+
+#### **🔧 Environment Variables (Railway):**
+```bash
+# Railway Dashboard > Variables sekmesinde ekle:
+FLASK_ENV=production
+PORT=5000
+PYTHONUNBUFFERED=1
+```
+
+#### **📊 Railway Monitoring:**
+- **CPU Usage**: Real-time CPU kullanımı
+- **Memory Usage**: RAM kullanımı
+- **Network**: İstek/yanıt istatistikleri
+- **Logs**: Detaylı log kayıtları
+- **Health Checks**: Otomatik sağlık kontrolü
+
+#### **1️⃣ Railway'e Deploy:**
+```bash
+# Railway CLI kurulumu
+npm install -g @railway/cli
+
+# Railway'e giriş yap
+railway login
+
+# Projeyi Railway'e deploy et
+railway up
+
+# Domain'i görüntüle
+railway domain
+```
+
+#### **2️⃣ GitHub'dan Otomatik Deploy:**
+1. GitHub repository'yi Railway'e bağla
+2. Otomatik deploy aktif olacak
+3. Her push'ta otomatik güncellenir
+
+#### **3️⃣ Railway Dashboard:**
+- **URL**: https://railway.app/dashboard
+- **Monitoring**: Real-time logs
+- **Scaling**: Otomatik ölçeklendirme
+- **SSL**: Otomatik HTTPS
+
+### 🐳 **Docker ile (Local)**
 
 #### **1️⃣ Docker Compose ile:**
 ```bash
@@ -268,6 +346,33 @@ xcode-select --install
 
 # Windows'ta Visual Studio Build Tools
 # https://visualstudio.microsoft.com/visual-cpp-build-tools/
+```
+
+### 🚂 **Railway Hatası**
+```bash
+# Railway CLI ile logları kontrol et
+railway logs
+
+# Railway'de yeniden deploy et
+railway up
+
+# Railway'de environment variables kontrol et
+railway variables
+
+# Railway'de health check kontrol et
+railway status
+```
+
+### 🌐 **Domain Hatası**
+```bash
+# Railway domain'ini kontrol et
+railway domain
+
+# Custom domain ekle (Railway Dashboard)
+# Settings > Domains > Add Domain
+
+# SSL sertifikasını kontrol et
+# Railway otomatik SSL sağlar
 ```
 
 ## 🔒 Güvenlik
