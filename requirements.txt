@@ -6,23 +6,19 @@
 # NOT: Apple Silicon (M1/M2/M3) için PyTorch kurulumu:
 # pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 # 
+# Docker için: PyTorch Dockerfile'da ayrıca kurulur
 # Diğer paketler için: pip install -r requirements.txt
-# 
-# Render Deployment için optimize edilmiştir
 
 # Web Framework
 Flask==2.3.3
 Flask-CORS==4.0.0
 
-# AI/ML Libraries
-torch==2.8.0
-torchvision==0.23.0
-torchaudio==2.8.0
+# AI/ML Libraries (PyTorch Dockerfile'da kurulur)
 transformers==4.35.0
 tokenizers==0.14.1
 
 # T5 Model için gerekli
-sentencepiece==0.1.99
+sentencepiece>=0.1.99
 
 # HTTP Requests
 requests==2.31.0

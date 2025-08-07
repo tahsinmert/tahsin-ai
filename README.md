@@ -87,33 +87,33 @@ python3 app.py
 
 ## 🚀 Çalıştırma
 
-### 🌐 **Render Deployment (Önerilen)**
+### 🐳 **Docker ile (Önerilen)**
 
-#### **1. Render Dashboard'a Gidin**
-- [render.com](https://render.com) adresine gidin
-- GitHub hesabınızla giriş yapın
+#### **1️⃣ Docker Compose ile:**
+```bash
+# Tüm servisleri başlat
+docker-compose up -d
 
-#### **2. Yeni Web Service Oluşturun**
-- "New +" butonuna tıklayın
-- "Web Service" seçin
-- GitHub repository'nizi bağlayın: `tahsinmert/tahsin-ai`
+# Logları görüntüle
+docker-compose logs -f
 
-#### **3. Konfigürasyon**
-- **Name**: `tahsin-ai-backend`
-- **Environment**: `Python`
-- **Build Command**: `chmod +x build.sh && ./build.sh`
-- **Start Command**: `python app.py`
-- **Plan**: `Starter` (ücretsiz)
+# Servisleri durdur
+docker-compose down
+```
 
-#### **4. Environment Variables**
-- `PYTHON_VERSION`: `3.9.6`
-- `PORT`: `10000`
+#### **2️⃣ Docker ile:**
+```bash
+# Backend image'ını build et
+docker build -t tahsin-ai-backend .
 
-#### **5. Deploy**
-- "Create Web Service" butonuna tıklayın
-- Deployment tamamlanmasını bekleyin (~10-15 dakika)
+# Backend container'ını çalıştır
+docker run -d -p 5000:5000 --name tahsin-ai-backend tahsin-ai-backend
 
-### 🏠 **Local Development**
+# Frontend için nginx kullan
+docker run -d -p 8000:80 -v $(pwd)/index.html:/usr/share/nginx/html/index.html nginx:alpine
+```
+
+### 🐍 **Python ile (Geliştirme)**
 
 #### **1️⃣ Backend Sunucusu**
 ```bash
@@ -244,6 +244,30 @@ pip install -r requirements.txt
 # Transformers cache'ini temizle
 rm -rf ~/.cache/huggingface/
 python3 app.py
+```
+
+### 🐳 **Docker Hatası**
+```bash
+# Docker cache'ini temizle
+docker system prune -a
+
+# Yeniden build et
+docker-compose build --no-cache
+
+# Servisleri yeniden başlat
+docker-compose up -d
+```
+
+### 🔧 **SentencePiece Hatası**
+```bash
+# Linux sistemlerde build araçlarını yükle
+sudo apt-get update && sudo apt-get install -y build-essential cmake pkg-config
+
+# macOS'ta Xcode Command Line Tools
+xcode-select --install
+
+# Windows'ta Visual Studio Build Tools
+# https://visualstudio.microsoft.com/visual-cpp-build-tools/
 ```
 
 ## 🔒 Güvenlik

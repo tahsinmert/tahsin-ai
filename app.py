@@ -4,7 +4,6 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer, AutoModelForCausalLM, A
 import torch
 import json
 import re
-import os
 
 app = Flask(__name__)
 CORS(app)
@@ -379,5 +378,4 @@ def health_check():
 
 if __name__ == '__main__':
     print("Tahsin AI Gelişmiş Çoklu Model Backend başlatılıyor...")
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False) 
+    app.run(host='0.0.0.0', port=5000, debug=True) 
