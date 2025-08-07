@@ -4,7 +4,6 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer, AutoModelForCausalLM, A
 import torch
 import json
 import re
-import os
 
 app = Flask(__name__)
 CORS(app)
@@ -12,20 +11,11 @@ CORS(app)
 # Modelleri yükle
 print("Modeller yükleniyor...")
 
-# Memory optimizasyonu
-torch.set_grad_enabled(False)  # Gradient hesaplamalarını kapat
-torch.backends.cudnn.benchmark = False  # CUDNN benchmark'ı kapat
-
 # Turkish GPT-2 modeli
 print("Turkish GPT-2 modeli yükleniyor...")
 turkish_model_name = "ytu-ce-cosmos/turkish-gpt2"
 turkish_tokenizer = GPT2Tokenizer.from_pretrained(turkish_model_name)
-turkish_model = GPT2LMHeadModel.from_pretrained(
-    turkish_model_name,
-    torch_dtype=torch.float32,  # Float32 kullan (daha az memory)
-    low_cpu_mem_usage=True,     # Düşük CPU memory kullanımı
-    device_map='auto'           # Otomatik device mapping
-)
+turkish_model = GPT2LMHeadModel.from_pretrained(turkish_model_name)
 
 # PAD token'ı ayarla
 if turkish_tokenizer.pad_token is None:
@@ -35,12 +25,7 @@ if turkish_tokenizer.pad_token is None:
 print("DialoGPT-medium modeli yükleniyor...")
 dialogpt_model_name = "microsoft/DialoGPT-medium"
 dialogpt_tokenizer = AutoTokenizer.from_pretrained(dialogpt_model_name)
-dialogpt_model = AutoModelForCausalLM.from_pretrained(
-    dialogpt_model_name,
-    torch_dtype=torch.float32,
-    low_cpu_mem_usage=True,
-    device_map='auto'
-)
+dialogpt_model = AutoModelForCausalLM.from_pretrained(dialogpt_model_name)
 
 # PAD token'ı ayarla
 if dialogpt_tokenizer.pad_token is None:
@@ -50,12 +35,7 @@ if dialogpt_tokenizer.pad_token is None:
 print("Flan-T5-base modeli yükleniyor...")
 flan_t5_model_name = "google/flan-t5-base"
 flan_t5_tokenizer = T5Tokenizer.from_pretrained(flan_t5_model_name)
-flan_t5_model = T5ForConditionalGeneration.from_pretrained(
-    flan_t5_model_name,
-    torch_dtype=torch.float32,
-    low_cpu_mem_usage=True,
-    device_map='auto'
-)
+flan_t5_model = T5ForConditionalGeneration.from_pretrained(flan_t5_model_name)
 
 print("Tüm modeller başarıyla yüklendi!")
 
@@ -398,6 +378,4 @@ def health_check():
 
 if __name__ == '__main__':
     print("Tahsin AI Gelişmiş Çoklu Model Backend başlatılıyor...")
-    port = int(os.environ.get('PORT', 5000))
-    debug = os.environ.get('FLASK_ENV') == 'development'
-    app.run(host='0.0.0.0', port=port, debug=debug) 
+    app.run(host='0.0.0.0', port=5000, debug=True) 

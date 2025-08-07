@@ -1049,9 +1049,8 @@
         async function generateWithSelectedModel(query) {
             try {
                 const selectedModel = modelSelect.value;
-                const backendUrl = getBackendUrl();
                 
-                const response = await fetch(`${backendUrl}/api/generate`, {
+                const response = await fetch('http://localhost:5000/api/generate', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1222,21 +1221,10 @@
         // Sayfa yüklendiğinde focus
         userInput.focus();
 
-        // Backend URL'ini al (Railway için)
-        function getBackendUrl() {
-            // Railway production URL'i
-            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-                return window.location.origin;
-            }
-            // Local development
-            return 'http://localhost:5000';
-        }
-
         // Backend bağlantısını kontrol et
         async function checkBackendConnection() {
             try {
-                const backendUrl = getBackendUrl();
-                const response = await fetch(`${backendUrl}/api/health`);
+                const response = await fetch('http://localhost:5000/api/health');
                 if (response.ok) {
                     const data = await response.json();
                     console.log('✅ Çoklu Model Backend bağlantısı başarılı');
