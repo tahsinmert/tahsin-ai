@@ -1050,7 +1050,12 @@
             try {
                 const selectedModel = modelSelect.value;
                 
-                const response = await fetch('http://localhost:5000/api/generate', {
+                // Render backend URL'si (production) veya localhost (development)
+                const backendUrl = window.location.hostname === 'localhost' 
+                    ? 'http://localhost:5000' 
+                    : 'https://tahsin-ai-backend.onrender.com';
+                
+                const response = await fetch(`${backendUrl}/api/generate`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1224,7 +1229,12 @@
         // Backend bağlantısını kontrol et
         async function checkBackendConnection() {
             try {
-                const response = await fetch('http://localhost:5000/api/health');
+                // Render backend URL'si (production) veya localhost (development)
+                const backendUrl = window.location.hostname === 'localhost' 
+                    ? 'http://localhost:5000' 
+                    : 'https://tahsin-ai-backend.onrender.com';
+                
+                const response = await fetch(`${backendUrl}/api/health`);
                 if (response.ok) {
                     const data = await response.json();
                     console.log('✅ Çoklu Model Backend bağlantısı başarılı');

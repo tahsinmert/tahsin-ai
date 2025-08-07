@@ -87,21 +87,49 @@ python3 app.py
 
 ## 🚀 Çalıştırma
 
-### 1️⃣ **Backend Sunucusu**
+### 🌐 **Render Deployment (Önerilen)**
+
+#### **1. Render Dashboard'a Gidin**
+- [render.com](https://render.com) adresine gidin
+- GitHub hesabınızla giriş yapın
+
+#### **2. Yeni Web Service Oluşturun**
+- "New +" butonuna tıklayın
+- "Web Service" seçin
+- GitHub repository'nizi bağlayın: `tahsinmert/tahsin-ai`
+
+#### **3. Konfigürasyon**
+- **Name**: `tahsin-ai-backend`
+- **Environment**: `Python`
+- **Build Command**: `chmod +x build.sh && ./build.sh`
+- **Start Command**: `python app.py`
+- **Plan**: `Starter` (ücretsiz)
+
+#### **4. Environment Variables**
+- `PYTHON_VERSION`: `3.9.6`
+- `PORT`: `10000`
+
+#### **5. Deploy**
+- "Create Web Service" butonuna tıklayın
+- Deployment tamamlanmasını bekleyin (~10-15 dakika)
+
+### 🏠 **Local Development**
+
+#### **1️⃣ Backend Sunucusu**
 ```bash
 # Terminal 1'de backend'i başlat
 python3 app.py
 ```
 Backend `http://localhost:5000` adresinde çalışacak.
 
-### 2️⃣ **Frontend Sunucusu**
+#### **2️⃣ Frontend Sunucusu**
 ```bash
 # Terminal 2'de frontend'i başlat
 python3 -m http.server 8000
 ```
 Frontend `http://localhost:8000` adresinde çalışacak.
 
-### 3️⃣ **Tarayıcıda Açın**
+#### **3️⃣ Tarayıcıda Açın**
 ```
 http://localhost:8000
 ```

@@ -1,0 +1,35 @@
+# Tahsin AI - Render Deployment Configuration
+# Bu dosya Render platformunda deployment için kullanılır
+
+services:
+  # Backend API Service
+  - type: web
+    name: tahsin-ai-backend
+    env: python
+    plan: starter
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.6
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/health
+    autoDeploy: true
+
+  # Frontend Static Site
+  - type: web
+    name: tahsin-ai-frontend
+    env: static
+    plan: starter
+    buildCommand: echo "Frontend is static HTML"
+    startCommand: python3 -m http.server $PORT
+    staticPublishPath: .
+    envVars:
+      - key: PORT
+        value: 10000
+    autoDeploy: true
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html 
