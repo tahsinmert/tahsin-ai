@@ -1,0 +1,33 @@
+# Tahsin AI - Hafif Versiyon (Railway için)
+# Python Version: 3.9.6
+# Pip Version: 21.2.4
+
+# Web Framework
+Flask==2.3.3
+Flask-CORS==4.0.0
+
+# AI/ML Libraries (Hafif)
+torch==2.8.0
+transformers==4.35.0
+tokenizers==0.14.1
+
+# HTTP Requests
+requests==2.31.0
+
+# JSON işlemleri
+jsonschema==4.19.2
+
+# Güvenlik
+cryptography==41.0.7
+
+# Development Tools
+python-dotenv==1.0.0
+
+# HTTP Client
+urllib3==2.0.7
+
+# SSL/TLS
+pyOpenSSL==23.3.0
+
+# System
+psutil==5.9.6 

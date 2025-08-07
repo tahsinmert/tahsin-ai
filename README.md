@@ -130,6 +130,9 @@ railway logs
 FLASK_ENV=production
 PORT=5000
 PYTHONUNBUFFERED=1
+PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
+TOKENIZERS_PARALLELISM=false
+TRANSFORMERS_CACHE=/tmp/transformers_cache
 ```
 
 #### **📊 Railway Monitoring:**
@@ -362,6 +365,32 @@ railway variables
 # Railway'de health check kontrol et
 railway status
 ```
+
+### 💾 **Railway Memory Sorunu**
+```bash
+# Hafif versiyonu kullan (Memory Optimized)
+# 1. railway_lightweight.json dosyasını railway.json olarak kopyala
+cp railway_lightweight.json railway.json
+
+# 2. nixpacks_lightweight.toml dosyasını nixpacks.toml olarak kopyala
+cp nixpacks_lightweight.toml nixpacks.toml
+
+# 3. requirements_lightweight.txt dosyasını requirements.txt olarak kopyala
+cp requirements_lightweight.txt requirements.txt
+
+# 4. app_lightweight.py dosyasını app.py olarak kopyala
+cp app_lightweight.py app.py
+
+# 5. Yeniden deploy et
+railway up
+```
+
+#### **🔧 Memory Optimizasyonları:**
+- ✅ **Tek Model**: Sadece DialoGPT-small
+- ✅ **Float32**: Daha az memory kullanımı
+- ✅ **Low CPU Memory**: Optimized loading
+- ✅ **Garbage Collection**: Otomatik temizlik
+- ✅ **Shorter Responses**: Daha kısa yanıtlar
 
 ### 🌐 **Domain Hatası**
 ```bash
