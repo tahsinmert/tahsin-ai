@@ -1,4 +1,48 @@
+# Tahsin AI - Turkish GPT-2 Destekli Akıllı Asistan
+# Python paket gereksinimleri
+# Python Version: 3.9.6
+# Pip Version: 21.2.4
+# 
+# NOT: Apple Silicon (M1/M2/M3) için PyTorch kurulumu:
+# pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+# 
+# Diğer paketler için: pip install -r requirements.txt
+
+# Web Framework
+Flask==2.3.3
+Flask-CORS==4.0.0
+
+# AI/ML Libraries
+torch==2.8.0
+torchvision==0.23.0
+torchaudio==2.8.0
 transformers==4.35.0
-torch==2.1.0
+tokenizers==0.14.1
+
+# T5 Model için gerekli
 sentencepiece==0.1.99
-accelerate==0.24.1 
+
+# HTTP Requests
+requests==2.31.0
+
+# JSON işlemleri
+jsonschema==4.19.2
+
+# Güvenlik
+cryptography==41.0.7
+
+# Development Tools (opsiyonel)
+python-dotenv==1.0.0
+
+# Web Scraping (fallback için)
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# HTTP Client
+urllib3==2.0.7
+
+# SSL/TLS
+pyOpenSSL==23.3.0
+
+# System
+psutil==5.9.6 
